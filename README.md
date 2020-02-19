@@ -1,2 +1,2 @@
 # 04_BattleTank
-Head-to-head tanke game
+Head-to-head tank game
