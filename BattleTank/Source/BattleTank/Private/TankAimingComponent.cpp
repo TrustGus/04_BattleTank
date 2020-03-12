@@ -2,6 +2,7 @@
 
 
 #include "TankAimingComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
@@ -33,11 +34,14 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 	// ...
 }
 
-void UTankAimingComponent::AimAt(FVector OutHitLocation) //Since this function is public and this header file is included in Tank.h, it can get called from the constructed pointer and the OutHitLocation Out variable can get modified by raycasting in TankPlayerController
+void UTankAimingComponent::AimAt(FVector OutHitLocation, float LaunchSpeed) //Since this function is public and this header file is included in Tank.h, it can get called from the constructed pointer and the OutHitLocation Out variable can get modified by raycasting in TankPlayerController
 {
-	FString OurTankName = GetOwner()->GetName();
+	UE_LOG(LogTemp, Warning, TEXT("firing at %s"), LaunchSpeed);
+}
 
-	UE_LOG(LogTemp, Warning, TEXT("%s Aim At: %s"), *OurTankName, *OutHitLocation.ToString());
+void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+{
+	Barrel = BarrelToSet;
 }
 
 
