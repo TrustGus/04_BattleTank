@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "TankBarrel.h"
 #include "TankAimingComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h"
@@ -45,7 +45,7 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation, float LaunchSpeed) //Si
 
 }
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
@@ -56,11 +56,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto BarrelRotation = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotation; //difference to move
-	
-	//MoveBarrel(FVector AimDirection)
-			//Get current location of barrel
-			//Get desired locatio, i.e. aim direction
-			//path between two locations, set yaw, pitch and roll where movement should occur. really itll just be in two directions
-			//broadcast values to bp to be used to set movement
+
+	Barrel->ElevateBarrel(5); //TODO get rid of magic number
 }
 
