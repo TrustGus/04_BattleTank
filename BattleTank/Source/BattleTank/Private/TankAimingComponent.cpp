@@ -44,12 +44,6 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation, float LaunchSpeed) //Si
 		MoveBarrelTowards(AimDirection);
 		MoveTurretTowards(AimDirection);
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("NO solution found for aiming"));
-	};
-
-
 }
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)

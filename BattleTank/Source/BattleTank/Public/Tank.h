@@ -9,6 +9,7 @@
 
 //Forward declaration
 class UTankAimingComponent; 
+class AProjectile;
 
 
 UCLASS()
@@ -42,7 +43,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Firing)
 		void Fire();
 
+	UPROPERTY(EditAnywhere, Category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint; //Allows reference to be set on unreal on drop down of tank BP (category = setup)
+
 private:
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 8000; //800 m/s
+
+	UTankBarrel* Barrel = nullptr; //Local barrel referencefor spawning projectile
 };
